@@ -22,6 +22,9 @@ bmoreEmissions <- NEI[NEI$fips=="24510",]
 # Group emissions by year and type of the source
 bmoreEmissionsByYearAndType <- aggregate(Emissions ~ year + type, bmoreEmissions, sum)
 
+## Force R not to use exponential notation (e.g. e+10)
+options("scipen"=100, "digits"=4)
+
 library(ggplot2)
 
 ## Create png file
@@ -40,6 +43,8 @@ emissionsPlot <- emissionsPlot + ylab(expression("Total PM"[2.5]*" emission"))
 emissionsPlot <- emissionsPlot + ggtitle(expression("PM"[2.5]*" emissions in Baltimore City by source types (point, nonpoint, onroad, nonroad)"))
 ## Change legend title
 emissionsPlot <- emissionsPlot + scale_fill_discrete(name = "Source type")
+## Add labels above each bar
+emissionsPlot <- emissionsPlot + geom_text(aes(label=round(Emissions, 0)), position=position_dodge(width=0.9), vjust=-0.25, size=3)
 ## Print to the file
 print(emissionsPlot)
 

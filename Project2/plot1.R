@@ -1,7 +1,7 @@
 ## Exploratory Data Analysys
 ## Rui Mendes (ruidamendes@ua.pt)
 ## Project2
-## January 2014
+## January 2015
 
 ## 1. Have total emissions from PM2.5 decreased in the United States from 1999 to 2008?
 ##    Using the base plotting system, make a plot showing the total PM2.5 emission from all 
